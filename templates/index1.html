@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+   <head>
+      <title>{{ title }}</title>
+      <link rel="stylesheet" href='../static/style.css'/>
+      <style>
+      .alert {
+        font-weight: bold;
+        color: red;
+      }
+      </style>
+    </head>
+    <body>
+     <h1>AquaPi Control</h1>
+     <h2> System Status </h2>
+     <h3>{{ 'Water Tank OK' if Container else ''  }}</h3>
+     <h3 class="alert">{{ '' if Container else 'Water Tank EMPTY' }}</h3>
+     <h3> {{ 'Water Level OK' if ATO else 'Water Level LOW' }}</h3>
+     <h3> {{ '' if ATO1 else 'Topping Up!' }}</h3>
+     <h3> {{ '' if Dos1 else 'Water Change Refilling'}}</h3>
+     <h3> {{ '' if Dos2 else 'Water Change Removing Water'}}</h3>
+     <br>
+
+     <h2> Actuator Status </h2>
+     <h3> Dosing Out Pump ==>  {{ 'OFF' if Dos2 else 'ON' }}</h3>
+     <h3> Doscing In Pump ==>  {{ 'OFF' if Dos1 else 'ON' }}</h3>
+     <h3> ATO Valve ==>  {{ 'Closed' if ATO1 else 'Open' }}</h3>
+     <br>
+     <h2> Commands </h2>
+     <h3>
+       Water Change ==>
+       <a href="/transmit/Changer" class="button">Run</a>
+     </h3>
+
+    </body>
+   </html>
